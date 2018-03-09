@@ -1,0 +1,91 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    int TAM = NULL;
+    int size =0;
+    int *p;
+    
+} life;
+
+int inserir(life vetor[]) {
+    int x, h,i,m;
+    printf("\ninforme a posicao a alterar:");
+    scanf("%d", &x);
+    if(x>10)
+    	{
+    		printf("Posicao inexistente\n");
+    		return 0;
+		}
+	
+	else
+		{
+			h = x-1;
+			i = vetor[h].TAM;
+	    }
+	    
+    if (vetor[h].TAM == NULL) {
+        printf("\nDigite o tamanho do vetor auxiliar:");
+        scanf("%d", &vetor[h].TAM);
+		vetor[h].p = (int*) malloc(sizeof(int)*i);
+		
+		for(int m=0 ; m < vetor[h].TAM ; m++)	
+			{
+				vetor[h].p[m]=0;
+			}
+		
+        }
+    if(vetor[h].size==vetor[h].TAM)
+	     printf("Vetor cheio!\n");
+		 
+	else {
+			printf("\nDigite o valor que deseja inserir:");
+			scanf("%d",&vetor[h].p[vetor[h].size]);
+			vetor[h].size++;
+		 }
+	return 0;  
+}
+
+void exibirmenu()
+	{
+		printf("\n\nDigite 1 para inserir elemento\n\n");
+		printf("Digite 2 para listar elementos\n\n");
+		printf("Digite 3 para listar elementos\n\n");
+		printf("Digite 0 para sair\n\n");
+	}
+	
+void listar(life vetor[])
+	{
+		int x,h;
+		printf("\nDigite a posicao que quer listar:");
+		scanf("%d",&x);
+		h=x-1;
+		printf("\n O tamanho da estrutura auxiliar eh: %d \n\n",vetor[h].TAM);
+		for(int i=0 ; i < vetor[h].TAM ; i++)	
+			{
+				printf("%d\n",vetor[h].p[i]);
+			}
+	}	
+
+main() {
+    life v[10];
+    int s=-1;
+    
+    for(int i ; s != 0 ; i++)
+    {
+    	exibirmenu();
+    	scanf("%d",&s);
+    	switch(s) 
+    	   {
+    	   	case 1: inserir(v);
+    	   			break;
+    	   	case 2: listar(v);
+    	   			break;
+    	   }
+    	
+    	
+	}
+    printf("Volte sempre!");
+    
+    
+}
