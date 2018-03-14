@@ -12,17 +12,15 @@ int inserir(life vetor[]) {
     int x, h,i,m;
     printf("\ninforme a posicao a alterar:");
     scanf("%d", &x);
-    if(x>10)
+    if((x>10) || (x<1))
     	{
     		printf("Posicao inexistente\n");
-    		return 0;
+    		return 0; //retornando algo ele já sai da condicao, nao precisa do else
 		}
 	
-	else
-		{
 			h = x-1;
 			i = vetor[h].TAM;
-	    }
+	    
 	    
     if (vetor[h].TAM == NULL) {
         printf("\nDigite o tamanho do vetor auxiliar:");
@@ -81,6 +79,7 @@ main() {
     	   			break;
     	   	case 2: listar(v);
     	   			break;
+		default: printf("Valor invalido"); break;		
     	   }
     	
     	
